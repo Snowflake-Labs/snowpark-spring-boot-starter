@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Snowflake Spring Boot Demo::TODOS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        #todolist table {
+            border: 1px solid black;
+        }
+
+        #todolist table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h2 th:text="#{todos.list.title}">List of Todos</h2>
+<div class="todolist" th:unless="${#lists.isEmpty(todos)}">
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{todos.title}">Title</th>
+            <th th:text="#{todos.description}">Description</th>
+            <th th:text="#{todos.category}">Category</th>
+            <th th:text="#{todos.status}">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="t : ${todos}">
+            <td th:text="${{t.title}}">Customer Name</td>
+            <td th:text="${{t.description}}">Customer Phone</td>
+            <td th:text="${{t.category}}">Country</td>
+            <td th:text="#{|todos.status.${t.status}|}">Status</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
